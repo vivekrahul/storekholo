@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Store Kholo — Brand Identity System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=IBM+Plex+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:       #0A0A14;
+    --ink-soft:  #12121E;
+    --ink-mid:   #1C1C2E;
+    --red:       #E8341A;
+    --red-dim:   rgba(232,52,26,0.12);
+    --red-glow:  rgba(232,52,26,0.35);
+    --steel:     #3D6FFF;
+    --steel-dim: rgba(61,111,255,0.10);
+    --off-white: #F0EEE8;
+    --muted:     #7A7A9A;
+    --rule:      rgba(255,255,255,0.07);
+    --mono:      'IBM Plex Mono', monospace;
+    --display:   'Sora', sans-serif;
+    --body:      'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ink);
+    color: var(--off-white);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── GRAIN ── */
+  body::before {
+    content:''; position:fixed; inset:0; pointer-events:none; z-index:999;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+    opacity: 0.4;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 20px 48px;
+    background: rgba(10,10,20,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav-logo {
+    font-family: var(--display); font-weight:800; font-size:1rem;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--off-white);
+  }
+  .nav-logo span { color:var(--red); }
+  .nav-links { display:flex; gap:32px; list-style:none; }
+  .nav-links a {
+    font-family: var(--mono); font-size:0.7rem; letter-spacing:0.12em;
+    text-transform:uppercase; color:var(--muted); text-decoration:none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color:var(--off-white); }
+  .nav-tag {
+    font-family:var(--mono); font-size:0.65rem; color:var(--red);
+    border:1px solid var(--red); padding:4px 10px; letter-spacing:0.1em;
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 120px 0; position:relative; }
+  .container { max-width:1160px; margin:0 auto; padding:0 48px; }
+  .section-label {
+    font-family:var(--mono); font-size:0.65rem; letter-spacing:0.2em;
+    color:var(--red); text-transform:uppercase; margin-bottom:24px;
+    display:flex; align-items:center; gap:12px;
+  }
+  .section-label::before {
+    content:''; display:block; width:32px; height:1px; background:var(--red);
+  }
+  .section-title {
+    font-family:var(--display); font-weight:800; font-size:clamp(2rem,4vw,3.2rem);
+    line-height:1.1; margin-bottom:16px; letter-spacing:-0.02em;
+  }
+  .section-sub {
+    font-family:var(--body); font-size:1rem; color:var(--muted);
+    max-width:540px; line-height:1.7; margin-bottom:64px;
+  }
+  .rule { width:100%; height:1px; background:var(--rule); margin: 80px 0; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height:100vh; display:flex; align-items:center;
+    padding-top:120px; overflow:hidden; position:relative;
+  }
+  .hero-grid-bg {
+    position:absolute; inset:0; pointer-events:none;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+  }
+  .hero-inner { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+  .hero-eyebrow {
+    font-family:var(--mono); font-size:0.7rem; letter-spacing:0.2em;
+    color:var(--red); text-transform:uppercase; margin-bottom:24px;
+  }
+  .hero-h1 {
+    font-family:var(--display); font-weight:800;
+    font-size:clamp(2.8rem,5vw,4.5rem); line-height:1.0;
+    letter-spacing:-0.03em; margin-bottom:24px;
+  }
+  .hero-h1 em { color:var(--red); font-style:normal; }
+  .hero-body { font-size:1.05rem; color:var(--muted); line-height:1.75; margin-bottom:40px; max-width:440px; }
+  .btn-row { display:flex; gap:16px; align-items:center; flex-wrap:wrap; }
+  .btn-primary {
+    font-family:var(--mono); font-size:0.75rem; letter-spacing:0.12em;
+    text-transform:uppercase; padding:14px 28px;
+    background:var(--red); color:white; border:none; cursor:pointer;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { opacity:0.85; transform:translateY(-1px); }
+  .btn-ghost {
+    font-family:var(--mono); font-size:0.75rem; letter-spacing:0.12em;
+    text-transform:uppercase; padding:13px 28px;
+    background:transparent; color:var(--off-white);
+    border:1px solid rgba(240,238,232,0.25); cursor:pointer;
+    transition: border-color 0.2s, color 0.2s;
+    text-decoration:none; display:inline-block;
+  }
+  .btn-ghost:hover { border-color:var(--off-white); }
+
+  /* Logo showcase */
+  .logo-showcase {
+    display:flex; flex-direction:column; gap:32px; align-items:flex-end;
+  }
+  .logo-card {
+    padding:40px 48px; border:1px solid var(--rule);
+    display:flex; align-items:center; justify-content:center;
+    position:relative; overflow:hidden; transition:border-color 0.3s;
+    width:100%;
+  }
+  .logo-card::before {
+    content:''; position:absolute; inset:0;
+    background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(232,52,26,0.04), transparent);
+  }
+  .logo-card:hover { border-color:rgba(232,52,26,0.3); }
+  .logo-card.dark { background:var(--ink); }
+  .logo-card.light { background:#F0EEE8; }
+  .logo-card.red-bg { background:var(--red); }
+
+  /* ── THE LOGO ── */
+  .sk-logo {
+    display:flex; align-items:center; gap:0; position:relative;
+  }
+  .sk-mark {
+    width:48px; height:48px; position:relative; margin-right:14px; flex-shrink:0;
+  }
+  .sk-mark svg { width:100%; height:100%; }
+  .sk-wordmark { display:flex; flex-direction:column; gap:1px; }
+  .sk-name {
+    font-family:var(--display); font-weight:800; font-size:1.5rem;
+    letter-spacing:0.06em; text-transform:uppercase; line-height:1;
+  }
+  .sk-tagline {
+    font-family:var(--mono); font-size:0.48rem; letter-spacing:0.28em;
+    text-transform:uppercase; color:var(--muted); line-height:1;
+  }
+
+  /* logo on light */
+  .logo-card.light .sk-name { color:#0A0A14; }
+  .logo-card.light .sk-tagline { color:#7A7A9A; }
+  .logo-card.red-bg .sk-tagline { color:rgba(255,255,255,0.6); }
+
+  /* small variant */
+  .sk-logo.sm .sk-mark { width:32px; height:32px; margin-right:10px; }
+  .sk-logo.sm .sk-name { font-size:1rem; }
+  .sk-logo.sm .sk-tagline { font-size:0.4rem; }
+
+  /* icon only */
+  .sk-logo.icon-only .sk-wordmark { display:none; }
+  .sk-logo.icon-only .sk-mark { margin-right:0; width:56px; height:56px; }
+
+  /* ── LOGO ANATOMY ── */
+  .anatomy-grid {
+    display:grid; grid-template-columns:1fr 1fr; gap:48px; margin-top:64px;
+  }
+  .anatomy-item { border-left:2px solid var(--rule); padding-left:24px; }
+  .anatomy-item.active { border-left-color:var(--red); }
+  .anatomy-num {
+    font-family:var(--mono); font-size:0.6rem; color:var(--red);
+    letter-spacing:0.15em; margin-bottom:8px;
+  }
+  .anatomy-label {
+    font-family:var(--display); font-weight:700; font-size:1rem; margin-bottom:6px;
+  }
+  .anatomy-desc { font-size:0.875rem; color:var(--muted); line-height:1.6; }
+
+  /* ── COLOR SYSTEM ── */
+  .color-grid {
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
+    gap:2px; margin-bottom:48px;
+  }
+  .color-swatch {
+    height:180px; position:relative; overflow:hidden; cursor:pointer;
+    transition:transform 0.2s;
+  }
+  .color-swatch:hover { transform:scale(1.02); z-index:2; }
+  .swatch-inner {
+    position:absolute; inset:0; display:flex; flex-direction:column;
+    justify-content:flex-end; padding:16px;
+  }
+  .swatch-name {
+    font-family:var(--display); font-weight:700; font-size:0.85rem;
+    margin-bottom:2px;
+  }
+  .swatch-hex { font-family:var(--mono); font-size:0.65rem; opacity:0.7; }
+  .swatch-role { font-family:var(--mono); font-size:0.55rem; letter-spacing:0.12em; opacity:0.5; margin-top:4px; }
+
+  /* secondary palette row */
+  .color-row { display:flex; gap:2px; margin-bottom:48px; }
+  .color-chip {
+    flex:1; height:80px; display:flex; flex-direction:column;
+    justify-content:flex-end; padding:10px 12px;
+    font-family:var(--mono); font-size:0.6rem;
+  }
+  .chip-name { font-weight:500; margin-bottom:1px; }
+  .chip-hex { opacity:0.6; }
+
+  /* ── TYPOGRAPHY ── */
+  .type-specimen { margin-bottom:64px; border:1px solid var(--rule); padding:48px; }
+  .type-label {
+    font-family:var(--mono); font-size:0.6rem; letter-spacing:0.2em;
+    color:var(--muted); text-transform:uppercase; margin-bottom:24px;
+    display:flex; gap:16px;
+  }
+  .type-label span { color:var(--red); }
+  .type-showcase { margin-bottom:32px; }
+  .type-meta {
+    display:flex; gap:32px; flex-wrap:wrap; padding-top:24px;
+    border-top:1px solid var(--rule); margin-top:32px;
+  }
+  .type-meta-item { font-family:var(--mono); font-size:0.65rem; }
+  .type-meta-item strong { color:var(--off-white); display:block; margin-bottom:2px; }
+  .type-meta-item span { color:var(--muted); }
+
+  .t-display { font-family:var(--display); font-weight:800; font-size:clamp(3rem,7vw,6rem); line-height:1.0; letter-spacing:-0.03em; }
+  .t-h1 { font-family:var(--display); font-weight:800; font-size:clamp(2rem,4vw,3.5rem); line-height:1.05; letter-spacing:-0.025em; }
+  .t-h2 { font-family:var(--display); font-weight:700; font-size:clamp(1.4rem,3vw,2.2rem); line-height:1.15; letter-spacing:-0.02em; }
+  .t-h3 { font-family:var(--display); font-weight:600; font-size:1.2rem; line-height:1.3; }
+  .t-body { font-family:var(--body); font-size:1rem; line-height:1.75; color:var(--muted); max-width:600px; }
+  .t-mono { font-family:var(--mono); font-size:0.8rem; line-height:1.6; color:var(--muted); }
+  .t-label { font-family:var(--mono); font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--red); }
+
+  /* scale table */
+  .type-scale { width:100%; border-collapse:collapse; }
+  .type-scale tr { border-bottom:1px solid var(--rule); }
+  .type-scale td { padding:16px 0; vertical-align:middle; }
+  .type-scale td:first-child { font-family:var(--mono); font-size:0.65rem; color:var(--muted); width:160px; }
+  .type-scale td:last-child { font-family:var(--mono); font-size:0.65rem; color:var(--muted); text-align:right; }
+
+  /* ── VISUAL LANGUAGE ── */
+  .vl-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-bottom:48px; }
+  .vl-card {
+    border:1px solid var(--rule); padding:32px; min-height:200px;
+    display:flex; flex-direction:column; position:relative; overflow:hidden;
+    transition:border-color 0.3s;
+  }
+  .vl-card:hover { border-color:rgba(232,52,26,0.3); }
+  .vl-card-label {
+    font-family:var(--mono); font-size:0.6rem; letter-spacing:0.15em;
+    color:var(--red); text-transform:uppercase; margin-bottom:16px;
+  }
+  .vl-card-title { font-family:var(--display); font-weight:700; font-size:1rem; margin-bottom:8px; }
+  .vl-card-desc { font-size:0.825rem; color:var(--muted); line-height:1.6; }
+
+  /* grid demo */
+  .grid-demo {
+    position:absolute; inset:0; pointer-events:none; opacity:0.15;
+    background-image:
+      linear-gradient(rgba(232,52,26,0.5) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(232,52,26,0.5) 1px, transparent 1px);
+    background-size:24px 24px;
+  }
+
+  /* spacing demo */
+  .spacing-row { display:flex; align-items:flex-end; gap:8px; margin-top:auto; }
+  .spacing-block { background:var(--red); opacity:0.7; }
+
+  /* motion demo */
+  .motion-bar {
+    height:2px; background:var(--red); margin-top:auto;
+    animation: motion-sweep 2s ease-in-out infinite;
+    transform-origin: left;
+  }
+  @keyframes motion-sweep {
+    0%,100% { transform:scaleX(0.1); opacity:0.3; }
+    50% { transform:scaleX(1); opacity:1; }
+  }
+
+  /* iconography demo */
+  .icon-row { display:flex; gap:16px; margin-top:auto; flex-wrap:wrap; }
+  .icon-box {
+    width:36px; height:36px; border:1px solid rgba(232,52,26,0.4);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--mono); font-size:0.7rem; color:var(--red);
+  }
+
+  /* texture demo */
+  .texture-demo {
+    position:absolute; inset:0; pointer-events:none;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 4px,
+      rgba(232,52,26,0.04) 4px,
+      rgba(232,52,26,0.04) 5px
+    );
+  }
+
+  /* border demo */
+  .border-samples { display:flex; flex-direction:column; gap:12px; margin-top:auto; }
+  .border-sample { height:1px; }
+
+  /* ── DATA CARD DEMO ── */
+  .data-card {
+    border:1px solid var(--rule); padding:24px; background:var(--ink-soft);
+    position:relative; overflow:hidden;
+  }
+  .data-card::before {
+    content:''; position:absolute; top:0; left:0; right:0; height:1px;
+    background:linear-gradient(90deg, var(--red), transparent);
+  }
+  .data-card-header {
+    display:flex; justify-content:space-between; align-items:center;
+    margin-bottom:20px;
+  }
+  .data-card-title { font-family:var(--mono); font-size:0.65rem; letter-spacing:0.15em; color:var(--muted); text-transform:uppercase; }
+  .data-status { display:flex; align-items:center; gap:6px; font-family:var(--mono); font-size:0.6rem; color:#4ADE80; }
+  .status-dot { width:6px; height:6px; border-radius:50%; background:#4ADE80; animation:pulse-dot 2s infinite; }
+  @keyframes pulse-dot { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+  .data-row { display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--rule); }
+  .data-row:last-child { border-bottom:none; }
+  .data-key { font-family:var(--mono); font-size:0.68rem; color:var(--muted); }
+  .data-val { font-family:var(--mono); font-size:0.68rem; color:var(--off-white); font-weight:500; }
+  .data-val.good { color:#4ADE80; }
+  .data-val.warn { color:#FBBF24; }
+  .data-val.red { color:var(--red); }
+
+  /* ── COMPONENT LIBRARY ── */
+  .component-grid { display:grid; grid-template-columns:1fr 1fr; gap:48px; }
+  .component-block { }
+  .component-label {
+    font-family:var(--mono); font-size:0.6rem; letter-spacing:0.15em;
+    color:var(--muted); text-transform:uppercase; margin-bottom:20px;
+    padding-bottom:12px; border-bottom:1px solid var(--rule);
+  }
+
+  /* buttons */
+  .btn-set { display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
+  .btn-sm { font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; padding:10px 20px; }
+  .btn-destructive { background:transparent; color:var(--red); border:1px solid var(--red); cursor:pointer; transition:all 0.2s; }
+  .btn-destructive:hover { background:var(--red); color:white; }
+  .btn-steel { background:transparent; color:var(--steel); border:1px solid var(--steel); cursor:pointer; font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; padding:10px 20px; transition:all 0.2s; }
+  .btn-steel:hover { background:var(--steel); color:white; }
+  .btn-muted { background:var(--ink-mid); color:var(--muted); border:1px solid var(--rule); cursor:pointer; font-family:var(--mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; padding:10px 20px; transition:all 0.2s; }
+  .btn-muted:hover { color:var(--off-white); }
+
+  /* tags/chips */
+  .tag-set { display:flex; flex-wrap:wrap; gap:8px; }
+  .tag {
+    font-family:var(--mono); font-size:0.6rem; letter-spacing:0.1em;
+    text-transform:uppercase; padding:5px 12px;
+    border:1px solid var(--rule); color:var(--muted);
+    transition:all 0.2s; cursor:default;
+  }
+  .tag.red { border-color:rgba(232,52,26,0.4); color:var(--red); background:var(--red-dim); }
+  .tag.steel { border-color:rgba(61,111,255,0.4); color:var(--steel); background:var(--steel-dim); }
+  .tag.active { border-color:var(--red); color:var(--off-white); background:var(--red-dim); }
+
+  /* dividers */
+  .divider-set { display:flex; flex-direction:column; gap:16px; }
+  .div-full { height:1px; background:var(--rule); }
+  .div-red { height:1px; background:linear-gradient(90deg,var(--red),transparent); }
+  .div-accent { height:2px; background:var(--red); width:40px; }
+  .div-dot { display:flex; gap:4px; align-items:center; }
+  .div-dot::before,.div-dot::after { content:''; flex:1; height:1px; background:var(--rule); }
+  .div-dot span { width:4px; height:4px; border-radius:50%; background:var(--red); }
+
+  /* marquee */
+  .marquee-wrap {
+    overflow:hidden; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+    padding:14px 0; background:var(--ink-soft);
+  }
+  .marquee-track {
+    display:flex; gap:0; white-space:nowrap;
+    animation:marquee 30s linear infinite;
+  }
+  .marquee-track span {
+    font-family:var(--mono); font-size:0.65rem; letter-spacing:0.18em;
+    color:var(--muted); text-transform:uppercase; padding:0 24px;
+  }
+  .marquee-track span.dot { color:var(--red); padding:0; }
+  @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* ── USAGE RULES ── */
+  .rules-grid { display:grid; grid-template-columns:1fr 1fr; gap:32px; }
+  .rule-card { padding:32px; border:1px solid var(--rule); }
+  .rule-card.do { border-top:2px solid #4ADE80; }
+  .rule-card.dont { border-top:2px solid var(--red); }
+  .rule-card-label {
+    font-family:var(--mono); font-size:0.6rem; letter-spacing:0.15em; margin-bottom:16px;
+  }
+  .rule-card.do .rule-card-label { color:#4ADE80; }
+  .rule-card.dont .rule-card-label { color:var(--red); }
+  .rule-item { font-size:0.875rem; color:var(--muted); padding:8px 0; border-bottom:1px solid var(--rule); line-height:1.5; }
+  .rule-item:last-child { border:none; }
+
+  /* ── CLEAR ZONE / SIZING ── */
+  .logo-sizes { display:flex; align-items:flex-end; gap:48px; flex-wrap:wrap; padding:40px 0; }
+  .size-demo { display:flex; flex-direction:column; align-items:center; gap:12px; }
+  .size-label { font-family:var(--mono); font-size:0.6rem; color:var(--muted); letter-spacing:0.1em; }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top:1px solid var(--rule); padding:40px 0; text-align:center;
+  }
+  .footer-logo { font-family:var(--display); font-weight:800; font-size:0.9rem; letter-spacing:0.2em; text-transform:uppercase; margin-bottom:8px; }
+  .footer-logo span { color:var(--red); }
+  .footer-sub { font-family:var(--mono); font-size:0.6rem; letter-spacing:0.2em; color:var(--muted); text-transform:uppercase; }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal { opacity:0; transform:translateY(24px); transition:opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:900px) {
+    nav { padding:16px 24px; }
+    .nav-links { display:none; }
+    .container { padding:0 24px; }
+    .hero-inner { grid-template-columns:1fr; }
+    .logo-showcase { align-items:stretch; }
+    .anatomy-grid { grid-template-columns:1fr; }
+    .vl-grid { grid-template-columns:1fr 1fr; }
+    .component-grid { grid-template-columns:1fr; }
+    .rules-grid { grid-template-columns:1fr; }
+    section { padding:80px 0; }
+  }
+  @media(max-width:580px) {
+    .vl-grid { grid-template-columns:1fr; }
+    .color-grid { grid-template-columns:1fr 1fr; }
+  }
+
+  /* section scroll highlight */
+  .toc-rail {
+    position:fixed; right:32px; top:50%; transform:translateY(-50%);
+    display:flex; flex-direction:column; gap:10px; z-index:50;
+  }
+  .toc-dot {
+    width:6px; height:6px; border-radius:50%; background:var(--rule);
+    transition:all 0.3s; cursor:pointer; border:1px solid transparent;
+  }
+  .toc-dot.active { background:var(--red); border-color:var(--red); box-shadow:0 0 8px var(--red-glow); }
+  @media(max-width:900px) { .toc-rail { display:none; } }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Store<span>·</span>Kholo</div>
+  <ul class="nav-links">
+    <li><a href="#logo">Logo</a></li>
+    <li><a href="#color">Color</a></li>
+    <li><a href="#type">Typography</a></li>
+    <li><a href="#visual">Visual Language</a></li>
+    <li><a href="#components">Components</a></li>
+  </ul>
+  <div class="nav-tag">Brand v1.0</div>
+</nav>
+
+<!-- TOC RAIL -->
+<div class="toc-rail">
+  <div class="toc-dot active" data-section="hero" title="Overview"></div>
+  <div class="toc-dot" data-section="logo" title="Logo"></div>
+  <div class="toc-dot" data-section="color" title="Color"></div>
+  <div class="toc-dot" data-section="type" title="Typography"></div>
+  <div class="toc-dot" data-section="visual" title="Visual Language"></div>
+  <div class="toc-dot" data-section="components" title="Components"></div>
+  <div class="toc-dot" data-section="usage" title="Usage Rules"></div>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-eyebrow">// Brand Identity System · v1.0</div>
+        <h1 class="hero-h1">Store Kholo.<br><em>Built to be</em><br>remembered.</h1>
+        <p class="hero-body">This document defines the complete visual identity of Store Kholo — logo, color, typography, and the visual language that ties it all together. Use it as the source of truth.</p>
+        <div class="btn-row">
+          <a href="#logo" class="btn-primary btn-sm">Explore Identity →</a>
+          <a href="#components" class="btn-ghost btn-sm">View Components</a>
+        </div>
+      </div>
+      <div class="logo-showcase">
+        <!-- Dark version -->
+        <div class="logo-card dark">
+          <div class="sk-logo">
+            <div class="sk-mark">
+              <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="16" y1="64" x2="16" y2="16" stroke="#F0EEE8" stroke-width="2" stroke-linecap="square"/>
+                <line x1="16" y1="16" x2="64" y2="16" stroke="#F0EEE8" stroke-width="2" stroke-linecap="square"/>
+                <line x1="16" y1="40" x2="48" y2="40" stroke="#E8341A" stroke-width="2" stroke-linecap="square"/>
+                <line x1="48" y1="40" x2="48" y2="64" stroke="#E8341A" stroke-width="2" stroke-linecap="square"/>
+                <rect x="9" y="9" width="14" height="14" fill="#F0EEE8"/>
+                <rect x="57" y="9" width="14" height="14" fill="#F0EEE8"/>
+                <rect x="9" y="57" width="14" height="14" fill="#F0EEE8"/>
+                <rect x="41" y="33" width="14" height="14" fill="#E8341A"/>
+                <rect x="41" y="57" width="14" height="14" fill="#E8341A"/>
+              </svg>
+            </div>
+            <div class="sk-wordmark">
+              <div class="sk-name">Store Kholo</div>
+              <div class="sk-tagline">Commerce Systems · Built to Scale</div>
+            </div>
+          </div>
+        </div>
+        <!-- Light version -->
+        <div class="logo-card light">
+          <div class="sk-logo">
+            <div class="sk-mark">
+              <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="16" y1="64" x2="16" y2="16" stroke="#0A0A14" stroke-width="2" stroke-linecap="square"/>
+                <line x1="16" y1="16" x2="64" y2="16" stroke="#0A0A14" stroke-width="2" stroke-linecap="square"/>
+                <line x1="16" y1="40" x2="48" y2="40" stroke="#E8341A" stroke-width="2" stroke-linecap="square"/>
+                <line x1="48" y1="40" x2="48" y2="64" stroke="#E8341A" stroke-width="2" stroke-linecap="square"/>
+                <rect x="9" y="9" width="14" height="14" fill="#0A0A14"/>
+                <rect x="57" y="9" width="14" height="14" fill="#0A0A14"/>
+                <rect x="9" y="57" width="14" height="14" fill="#0A0A14"/>
+                <rect x="41" y="33" width="14" height="14" fill="#E8341A"/>
+                <rect x="41" y="57" width="14" height="14" fill="#E8341A"/>
+              </svg>
+            </div>
+            <div class="sk-wordmark">
+              <div class="sk-name">Store Kholo</div>
+              <div class="sk-tagline">Commerce Systems · Built to Scale</div>
+            </div>
+          </div>
+        </div>
+        <!-- Red version -->
+        <div class="logo-card red-bg">
+          <div class="sk-logo sm">
+            <div class="sk-mark">
+              <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="16" y1="64" x2="16" y2="16" stroke="white" stroke-width="2" stroke-linecap="square"/>
+                <line x1="16" y1="16" x2="64" y2="16" stroke="white" stroke-width="2" stroke-linecap="square"/>
+                <line x1="16" y1="40" x2="48" y2="40" stroke="rgba(255,255,255,0.55)" stroke-width="2" stroke-linecap="square"/>
+                <line x1="48" y1="40" x2="48" y2="64" stroke="rgba(255,255,255,0.55)" stroke-width="2" stroke-linecap="square"/>
+                <rect x="9" y="9" width="14" height="14" fill="white"/>
+                <rect x="57" y="9" width="14" height="14" fill="white"/>
+                <rect x="9" y="57" width="14" height="14" fill="white"/>
+                <rect x="41" y="33" width="14" height="14" fill="rgba(255,255,255,0.65)"/>
+                <rect x="41" y="57" width="14" height="14" fill="rgba(255,255,255,0.65)"/>
+              </svg>
+            </div>
+            <div class="sk-wordmark">
+              <div class="sk-name" style="color:white">Store Kholo</div>
+              <div class="sk-tagline">Commerce Systems · Built to Scale</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span>Brand Identity</span><span class="dot">·</span>
+    <span>Color System</span><span class="dot">·</span>
+    <span>Typography</span><span class="dot">·</span>
+    <span>Visual Language</span><span class="dot">·</span>
+    <span>Component Library</span><span class="dot">·</span>
+    <span>Usage Rules</span><span class="dot">·</span>
+    <span>Store Kholo v1.0</span><span class="dot">·</span>
+    <span>Brand Identity</span><span class="dot">·</span>
+    <span>Color System</span><span class="dot">·</span>
+    <span>Typography</span><span class="dot">·</span>
+    <span>Visual Language</span><span class="dot">·</span>
+    <span>Component Library</span><span class="dot">·</span>
+    <span>Usage Rules</span><span class="dot">·</span>
+    <span>Store Kholo v1.0</span><span class="dot">·</span>
+  </div>
+</div>
+
+<!-- LOGO SYSTEM -->
+<section id="logo">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">01 / Logo System</div>
+      <h2 class="section-title">The Mark &amp; Wordmark</h2>
+      <p class="section-sub">The Store Kholo logo combines a geometric mark with a structured wordmark. The mark is a modular grid symbol — two letterforms (S + K) fused into a system diagram — referencing the connected, architectural nature of what we build.</p>
+    </div>
+
+    <!-- Icon sizes -->
+    <div class="reveal">
+      <div class="logo-sizes">
+        <div class="size-demo">
+          <div class="sk-logo icon-only">
+            <div class="sk-mark">
+              <svg viewBox="0 0 80 80" fill="none"><line x1="16" y1="64" x2="16" y2="16" stroke="#F0EEE8" stroke-width="2" stroke-linecap="square"/><line x1="16" y1="16" x2="64" y2="16" stroke="#F0EEE8" stroke-width="2" stroke-linecap="square"/><line x1="16" y1="40" x2="48" y2="40" stroke="#E8341A" stroke-width="2" stroke-linecap="square"/><line x1="48" y1="40" x2="48" y2="64" stroke="#E8341A" stroke-width="2" stroke-linecap="square"/><rect x="9" y="9" width="14" height="14" fill="#F0EEE8"/><rect x="57" y="9" width="14" height="14" fill="#F0EEE8"/><rect x="9" y="57" width="14" height="14" fill="#F0EEE8"/><rect x="41" y="33" width="14" height="14" fill="#E8341A"/><rect x="41" y="57" width="14" height="14" fill="#E8341A"/></svg>
+            </div>
+          </div>
+          <div class="size-label">56px / Favicon</div>
+        </div>
+        <div class="size-demo">
+          <div class="sk-logo sm">
+            <div class="sk-mark" style="width:32px;height:32px">
+              <svg viewBox="0 0 80 80" fill="none"><line x1="16" y1="64" x2="16" y2="16" stroke="#F0EEE8" stroke-width="2" stroke-linecap="square"/><line x1="16" y1="16" x2="64" y2="16" stroke="#F0EEE8" stroke-width="2" stroke-linecap="square"/><line x1="16" y1="40" x2="48" y2="40" stroke="#E8341A" stroke-width="2" stroke-linecap="square"/><line x1="48" y1="40" x2="48" y2="64" stroke="#E8341A" stroke-width="2" stroke-linecap="square"/><rect x="9" y="9" width="14" height="14" fill="#F0EEE8"/><rect x="57" y="9" width="14" height="14" fill="#F0EEE8"/><rect x="9" y="57" width="14" height="14" fill="#F0EEE8"/><rect x="41" y="33" width="14" height="14" fill="#E8341A"/><rect x="41" y="57" width="14" height="14" fill="#E8341A"/></svg>
+            </div>
+            <div class="sk-wordmark">
+              <div class="sk-name" style="font-size:0.9rem">Store Kholo</div>
+              <div class="sk-tagline">Commerce Systems · Built to Scale</div>
+            </div>
+          </div>
+          <div class="size-label">Nav / Small</div>
+        </div>
+        <div class="size-demo">
+          <div class="sk-logo">
+            <div class="sk-mark">
+              <svg viewBox="0 0 80 80" fill="none"><line x1="16" y1="64" x2="16" y2="16" stroke="#F0EEE8" stroke-width="2" stroke-linecap="square"/><line x1="16" y1="16" x2="64" y2="16" stroke="#F0EEE8" stroke-width="2" stroke-linecap="square"/><line x1="16" y1="40" x2="48" y2="40" stroke="#E8341A" stroke-width="2" stroke-linecap="square"/><line x1="48" y1="40" x2="48" y2="64" stroke="#E8341A" stroke-width="2" stroke-linecap="square"/><rect x="9" y="9" width="14" height="14" fill="#F0EEE8"/><rect x="57" y="9" width="14" height="14" fill="#F0EEE8"/><rect x="9" y="57" width="14" height="14" fill="#F0EEE8"/><rect x="41" y="33" width="14" height="14" fill="#E8341A"/><rect x="41" y="57" width="14" height="14" fill="#E8341A"/></svg>
+            </div>
+            <div class="sk-wordmark">
+              <div class="sk-name">Store Kholo</div>
+              <div class="sk-tagline">Commerce Systems · Built to Scale</div>
+            </div>
+          </div>
+          <div class="size-label">Default / Web</div>
+        </div>
+        <div class="size-demo">
+          <div class="sk-logo">
+            <div class="sk-mark" style="width:72px;height:72px">
+              <svg viewBox="0 0 80 80" fill="none"><line x1="16" y1="64" x2="16" y2="16" stroke="#F0EEE8" stroke-width="2" stroke-linecap="square"/><line x1="16" y1="16" x2="64" y2="16" stroke="#F0EEE8" stroke-width="2" stroke-linecap="square"/><line x1="16" y1="40" x2="48" y2="40" stroke="#E8341A" stroke-width="2" stroke-linecap="square"/><line x1="48" y1="40" x2="48" y2="64" stroke="#E8341A" stroke-width="2" stroke-linecap="square"/><rect x="9" y="9" width="14" height="14" fill="#F0EEE8"/><rect x="57" y="9" width="14" height="14" fill="#F0EEE8"/><rect x="9" y="57" width="14" height="14" fill="#F0EEE8"/><rect x="41" y="33" width="14" height="14" fill="#E8341A"/><rect x="41" y="57" width="14" height="14" fill="#E8341A"/></svg>
+            </div>
+            <div class="sk-wordmark">
+              <div class="sk-name" style="font-size:2rem">Store Kholo</div>
+              <div class="sk-tagline" style="font-size:0.55rem">Commerce Systems · Built to Scale</div>
+            </div>
+          </div>
+          <div class="size-label">Hero / Display</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rule"></div>
+
+    <!-- Anatomy -->
+    <div class="reveal">
+      <div class="section-label">Logo Anatomy</div>
+      <div class="anatomy-grid">
+        <div class="anatomy-item active">
+          <div class="anatomy-num">01 /</div>
+          <div class="anatomy-label">The Mark</div>
+          <div class="anatomy-desc">A connected-node system mark on a strict orthogonal grid. Three off-white nodes form an L-shaped structural axis — the foundation layer. Two red nodes branch off mid-axis — the active system layer. No letterforms. Reads cleanly from 16px to 128px.</div>
+        </div>
+        <div class="anatomy-item">
+          <div class="anatomy-num">02 /</div>
+          <div class="anatomy-label">The Wordmark</div>
+          <div class="anatomy-desc">"Store Kholo" set in Sora ExtraBold, all caps optically adjusted. Letter-spacing at +0.06em. No ligatures. The name sits on the baseline of commerce — direct, readable, confident. Never italicized.</div>
+        </div>
+        <div class="anatomy-item">
+          <div class="anatomy-num">03 /</div>
+          <div class="anatomy-label">The Tagline</div>
+          <div class="anatomy-desc">"Commerce Systems · Built to Scale" in IBM Plex Mono at 0.48rem, +0.28em tracking. Appears beneath the wordmark only in full-lockup usage. Rendered in muted tone — it supports, never competes.</div>
+        </div>
+        <div class="anatomy-item">
+          <div class="anatomy-num">04 /</div>
+          <div class="anatomy-label">Clear Zone</div>
+          <div class="anatomy-desc">Minimum clear zone equals the height of the red corner square on all four sides. No graphic elements, text, or imagery may encroach this space. On digital, minimum logo width is 120px for the full lockup, 32px for the mark alone.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COLOR SYSTEM -->
+<section id="color" style="background:var(--ink-soft)">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">02 / Color System</div>
+      <h2 class="section-title">Primary Palette</h2>
+      <p class="section-sub">Three primaries. One accent. Strict hierarchy. Color is used to direct attention — not decorate. The red accent appears only where action or emphasis is intended.</p>
+    </div>
+
+    <div class="reveal">
+      <div class="color-grid">
+        <div class="color-swatch" style="background:#0A0A14">
+          <div class="swatch-inner">
+            <div class="swatch-name">Ink</div>
+            <div class="swatch-hex">#0A0A14</div>
+            <div class="swatch-role">Primary Background</div>
+          </div>
+        </div>
+        <div class="color-swatch" style="background:#12121E">
+          <div class="swatch-inner">
+            <div class="swatch-name">Ink Soft</div>
+            <div class="swatch-hex">#12121E</div>
+            <div class="swatch-role">Section BG / Cards</div>
+          </div>
+        </div>
+        <div class="color-swatch" style="background:#1C1C2E">
+          <div class="swatch-inner">
+            <div class="swatch-name">Ink Mid</div>
+            <div class="swatch-hex">#1C1C2E</div>
+            <div class="swatch-role">Elevated Surfaces</div>
+          </div>
+        </div>
+        <div class="color-swatch" style="background:#E8341A">
+          <div class="swatch-inner">
+            <div class="swatch-name">Signal Red</div>
+            <div class="swatch-hex">#E8341A</div>
+            <div class="swatch-role">Accent / CTA / Action</div>
+          </div>
+        </div>
+        <div class="color-swatch" style="background:#F0EEE8">
+          <div class="swatch-inner" style="color:#0A0A14">
+            <div class="swatch-name" style="color:#0A0A14">Off-White</div>
+            <div class="swatch-hex" style="color:#0A0A14;opacity:0.6">#F0EEE8</div>
+            <div class="swatch-role" style="color:#0A0A14;opacity:0.4">Primary Text</div>
+          </div>
+        </div>
+        <div class="color-swatch" style="background:#7A7A9A">
+          <div class="swatch-inner">
+            <div class="swatch-name">Muted</div>
+            <div class="swatch-hex">#7A7A9A</div>
+            <div class="swatch-role">Secondary Text / Labels</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <div class="section-label" style="margin-top:64px">Secondary &amp; Functional</div>
+      <div class="color-row">
+        <div class="color-chip" style="background:#3D6FFF">
+          <div class="chip-name">Steel Blue</div>
+          <div class="chip-hex">#3D6FFF</div>
+        </div>
+        <div class="color-chip" style="background:#4ADE80;color:#0A0A14">
+          <div class="chip-name" style="color:#0A0A14">System Green</div>
+          <div class="chip-hex" style="color:#0A0A14;opacity:0.6">#4ADE80</div>
+        </div>
+        <div class="color-chip" style="background:#FBBF24;color:#0A0A14">
+          <div class="chip-name" style="color:#0A0A14">Warning Amber</div>
+          <div class="chip-hex" style="color:#0A0A14;opacity:0.6">#FBBF24</div>
+        </div>
+        <div class="color-chip" style="background:rgba(232,52,26,0.12);border:1px solid rgba(232,52,26,0.3)">
+          <div class="chip-name">Red Dim</div>
+          <div class="chip-hex">rgba(232,52,26,0.12)</div>
+        </div>
+        <div class="color-chip" style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1)">
+          <div class="chip-name">Rule</div>
+          <div class="chip-hex">rgba(255,255,255,0.07)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Color usage table -->
+    <div class="reveal" style="margin-top:48px">
+      <div class="section-label">Color Hierarchy Rules</div>
+      <table class="type-scale" style="margin-top:16px">
+        <tr>
+          <td style="color:var(--off-white);font-weight:500">Signal Red</td>
+          <td style="color:var(--muted);font-family:var(--body);font-size:0.875rem">CTAs, active states, accent lines, the logo corner mark, key data highlights. One use per visual unit.</td>
+          <td>Sparingly</td>
+        </tr>
+        <tr>
+          <td style="color:var(--off-white);font-weight:500">Steel Blue</td>
+          <td style="color:var(--muted);font-family:var(--body);font-size:0.875rem">System/data elements, secondary actions, the 1→10 client card, technical UI elements.</td>
+          <td>Secondary</td>
+        </tr>
+        <tr>
+          <td style="color:var(--off-white);font-weight:500">Off-White</td>
+          <td style="color:var(--muted);font-family:var(--body);font-size:0.875rem">All primary headings and key body text on dark backgrounds.</td>
+          <td>Primary text</td>
+        </tr>
+        <tr>
+          <td style="color:var(--off-white);font-weight:500">Muted</td>
+          <td style="color:var(--muted);font-family:var(--body);font-size:0.875rem">Body copy, descriptions, secondary labels, metadata. Never used for headings.</td>
+          <td>Body</td>
+        </tr>
+        <tr>
+          <td style="color:var(--off-white);font-weight:500">System Green</td>
+          <td style="color:var(--muted);font-family:var(--body);font-size:0.875rem">Live status indicators, positive metrics, "Do" states only. Never decorative.</td>
+          <td>Functional only</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- TYPOGRAPHY -->
+<section id="type">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">03 / Typography</div>
+      <h2 class="section-title">Three Fonts. One System.</h2>
+      <p class="section-sub">Each typeface has a defined role. Sora carries authority. DM Sans carries clarity. IBM Plex Mono carries precision. They never swap roles.</p>
+    </div>
+
+    <!-- Sora -->
+    <div class="reveal">
+      <div class="type-specimen">
+        <div class="type-label">Sora ExtraBold · <span>Display &amp; Headings</span></div>
+        <div class="type-showcase">
+          <div class="t-display" style="line-height:1">Commerce<br>Systems.</div>
+        </div>
+        <div style="margin-top:24px">
+          <div class="t-h1" style="margin-bottom:12px">We Build What Works.</div>
+          <div class="t-h2" style="margin-bottom:12px;color:var(--muted)">Five layers. One system.</div>
+          <div class="t-h3" style="color:var(--muted)">Brand · Store · Integrations · AI · Growth</div>
+        </div>
+        <div class="type-meta">
+          <div class="type-meta-item"><strong>Family</strong><span>Sora</span></div>
+          <div class="type-meta-item"><strong>Weights Used</strong><span>700, 800</span></div>
+          <div class="type-meta-item"><strong>Role</strong><span>Display, H1–H3</span></div>
+          <div class="type-meta-item"><strong>Tracking</strong><span>-0.02em to -0.03em</span></div>
+          <div class="type-meta-item"><strong>Source</strong><span>Google Fonts</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DM Sans -->
+    <div class="reveal">
+      <div class="type-specimen">
+        <div class="type-label">DM Sans · <span>Body &amp; UI</span></div>
+        <div class="type-showcase">
+          <p class="t-body">Most early businesses don't have an execution problem — they have a systems problem. Five vendors, no integration. A store with no conversion architecture. AI tools with no process redesign. Store Kholo exists to replace that fragmented approach with one system, built right, from the start.</p>
+        </div>
+        <div style="margin-top:24px;display:flex;gap:32px;flex-wrap:wrap">
+          <div style="font-family:var(--body);font-size:1rem;font-weight:300;color:var(--muted)">Light 300</div>
+          <div style="font-family:var(--body);font-size:1rem;font-weight:400;color:var(--muted)">Regular 400</div>
+          <div style="font-family:var(--body);font-size:1rem;font-weight:500;color:var(--muted)">Medium 500</div>
+          <div style="font-family:var(--body);font-size:1rem;font-weight:400;font-style:italic;color:var(--muted)">Italic</div>
+        </div>
+        <div class="type-meta">
+          <div class="type-meta-item"><strong>Family</strong><span>DM Sans</span></div>
+          <div class="type-meta-item"><strong>Weights Used</strong><span>300, 400, 500</span></div>
+          <div class="type-meta-item"><strong>Role</strong><span>Body, UI labels, nav</span></div>
+          <div class="type-meta-item"><strong>Line Height</strong><span>1.7–1.8</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- IBM Plex Mono -->
+    <div class="reveal">
+      <div class="type-specimen">
+        <div class="type-label">IBM Plex Mono · <span>Technical &amp; Data</span></div>
+        <div class="type-showcase">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+            <div>
+              <div class="t-label" style="margin-bottom:12px">// SYSTEM STATUS</div>
+              <div class="t-mono">Conversion Rate: 4.2%<br>Active Flows: 12<br>Hours Saved: 38/wk<br>Status: Nominal</div>
+            </div>
+            <div>
+              <div class="t-label" style="margin-bottom:12px">// PRACTICE AREAS</div>
+              <div class="t-mono">01 / Brand Identity<br>02 / Commerce Build<br>03 / Systems Integration<br>04 / AI Operations</div>
+            </div>
+          </div>
+        </div>
+        <div class="type-meta">
+          <div class="type-meta-item"><strong>Family</strong><span>IBM Plex Mono</span></div>
+          <div class="type-meta-item"><strong>Weights Used</strong><span>300, 400, 500</span></div>
+          <div class="type-meta-item"><strong>Role</strong><span>Labels, data, code, tags</span></div>
+          <div class="type-meta-item"><strong>Tracking</strong><span>+0.1em to +0.2em</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Type scale -->
+    <div class="reveal">
+      <div class="section-label">Type Scale</div>
+      <table class="type-scale" style="margin-top:16px">
+        <tr>
+          <td>Display</td>
+          <td><span style="font-family:var(--display);font-weight:800;font-size:2rem;letter-spacing:-0.03em">Commerce Systems</span></td>
+          <td>Sora 800 / 5–7rem</td>
+        </tr>
+        <tr>
+          <td>Heading 1</td>
+          <td><span style="font-family:var(--display);font-weight:800;font-size:1.6rem;letter-spacing:-0.025em">We Build What Works</span></td>
+          <td>Sora 800 / 3–4rem</td>
+        </tr>
+        <tr>
+          <td>Heading 2</td>
+          <td><span style="font-family:var(--display);font-weight:700;font-size:1.3rem;letter-spacing:-0.02em">Five Layers. One System.</span></td>
+          <td>Sora 700 / 2–2.5rem</td>
+        </tr>
+        <tr>
+          <td>Heading 3</td>
+          <td><span style="font-family:var(--display);font-weight:600;font-size:1.1rem">Discovery & Audit</span></td>
+          <td>Sora 600 / 1.2rem</td>
+        </tr>
+        <tr>
+          <td>Body</td>
+          <td><span style="font-family:var(--body);font-size:0.95rem;color:var(--muted)">We've seen what breaks at scale.</span></td>
+          <td>DM Sans 400 / 1rem</td>
+        </tr>
+        <tr>
+          <td>Label / Mono</td>
+          <td><span style="font-family:var(--mono);font-size:0.75rem;letter-spacing:0.15em;color:var(--red);text-transform:uppercase">// SECTION LABEL</span></td>
+          <td>IBM Plex Mono / 0.65rem</td>
+        </tr>
+        <tr>
+          <td>Caption</td>
+          <td><span style="font-family:var(--mono);font-size:0.65rem;color:var(--muted)">v1.0 · Brand Identity System</span></td>
+          <td>IBM Plex Mono 300 / 0.6rem</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- VISUAL LANGUAGE -->
+<section id="visual" style="background:var(--ink-soft)">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">04 / Visual Language</div>
+      <h2 class="section-title">How the Brand Behaves</h2>
+      <p class="section-sub">Visual language is everything below the logo — the patterns, motions, textures, and spatial logic that make the brand feel consistent across every surface.</p>
+    </div>
+
+    <div class="reveal">
+      <div class="vl-grid">
+
+        <!-- Grid -->
+        <div class="vl-card">
+          <div class="grid-demo"></div>
+          <div class="vl-card-label">Grid System</div>
+          <div class="vl-card-title">8pt Base Grid</div>
+          <div class="vl-card-desc">All spacing, sizing, and layout decisions live on a strict 8pt grid. 12-column desktop, 4-column mobile. Gutters: 24px. Margins: 48px desktop, 24px mobile.</div>
+        </div>
+
+        <!-- Spacing -->
+        <div class="vl-card">
+          <div class="vl-card-label">Spacing Scale</div>
+          <div class="vl-card-title">Deliberate Density</div>
+          <div class="vl-card-desc">Generous vertical space between sections creates breathing room. Dense information within components signals precision. Tension between the two creates visual authority.</div>
+          <div class="spacing-row">
+            <div class="spacing-block" style="width:8px;height:8px"></div>
+            <div class="spacing-block" style="width:16px;height:16px"></div>
+            <div class="spacing-block" style="width:24px;height:24px"></div>
+            <div class="spacing-block" style="width:32px;height:32px"></div>
+            <div class="spacing-block" style="width:48px;height:48px"></div>
+            <div class="spacing-block" style="width:64px;height:64px"></div>
+          </div>
+        </div>
+
+        <!-- Motion -->
+        <div class="vl-card">
+          <div class="vl-card-label">Motion Principles</div>
+          <div class="vl-card-title">Purposeful Only</div>
+          <div class="vl-card-desc">Animations reveal structure, never decorate. Entry: fade + translateY(24px), 0.6s ease. Hover: opacity shift + 1px Y-translate. No bounces. No spins. No attention-seeking motion.</div>
+          <div class="motion-bar" style="margin-top:auto"></div>
+        </div>
+
+        <!-- Borders -->
+        <div class="vl-card">
+          <div class="vl-card-label">Border Language</div>
+          <div class="vl-card-title">Structural Lines</div>
+          <div class="vl-card-desc">Borders define space, not style. Rules use rgba(255,255,255,0.07). Accent borders signal activity or hierarchy. The red left-border on active states is a universal system signal.</div>
+          <div class="border-samples">
+            <div class="border-sample" style="background:var(--rule)"></div>
+            <div class="border-sample" style="background:linear-gradient(90deg,var(--red),transparent)"></div>
+            <div class="border-sample" style="background:var(--red);width:40px;height:2px"></div>
+            <div style="border-left:3px solid var(--red);padding-left:12px;font-family:var(--mono);font-size:0.65rem;color:var(--muted)">Active state border</div>
+          </div>
+        </div>
+
+        <!-- Iconography -->
+        <div class="vl-card">
+          <div class="vl-card-label">Iconography</div>
+          <div class="vl-card-title">Geometric & Square</div>
+          <div class="vl-card-desc">Icons use a 24×24 grid, 1.5px stroke, square linecaps. No rounded corners. No filled icons. Monochrome — off-white on dark, or red for active/alert states.</div>
+          <div class="icon-row">
+            <div class="icon-box">→</div>
+            <div class="icon-box">↓</div>
+            <div class="icon-box">+</div>
+            <div class="icon-box">×</div>
+            <div class="icon-box">↗</div>
+            <div class="icon-box" style="border-color:rgba(240,238,232,0.2);color:var(--off-white)">◦</div>
+          </div>
+        </div>
+
+        <!-- Texture -->
+        <div class="vl-card">
+          <div class="texture-demo"></div>
+          <div class="vl-card-label">Texture & Grain</div>
+          <div class="vl-card-title">Depth Without Noise</div>
+          <div class="vl-card-desc">SVG grain at 3–4% opacity on all dark surfaces. Diagonal hatching at 4% for textured card variants. Grid overlay at 2% for data/technical sections. Never stacked together.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Data card demo -->
+    <div class="reveal" style="margin-top:32px">
+      <div class="section-label">Signature Element — The Data Card</div>
+      <p style="font-size:0.875rem;color:var(--muted);margin-bottom:32px;max-width:540px">The data card is Store Kholo's most recognizable UI pattern. It appears in the hero, in case studies, and in pitch decks. It signals: we are the system, not just a service.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px">
+        <div class="data-card">
+          <div class="data-card-header">
+            <div class="data-card-title">Automation Layer</div>
+            <div class="data-status"><div class="status-dot"></div>Nominal</div>
+          </div>
+          <div class="data-row"><span class="data-key">Active Flows</span><span class="data-val">12</span></div>
+          <div class="data-row"><span class="data-key">Hours Saved / Week</span><span class="data-val good">38 hrs</span></div>
+          <div class="data-row"><span class="data-key">Trigger Events</span><span class="data-val">1,204</span></div>
+          <div class="data-row"><span class="data-key">Errors</span><span class="data-val good">0</span></div>
+        </div>
+        <div class="data-card">
+          <div class="data-card-header">
+            <div class="data-card-title">Shopify Store</div>
+            <div class="data-status"><div class="status-dot"></div>Optimized</div>
+          </div>
+          <div class="data-row"><span class="data-key">Conversion Rate</span><span class="data-val good">4.2%</span></div>
+          <div class="data-row"><span class="data-key">AOV</span><span class="data-val">₹2,840</span></div>
+          <div class="data-row"><span class="data-key">Cart Abandonment</span><span class="data-val warn">18%</span></div>
+          <div class="data-row"><span class="data-key">MoM Growth</span><span class="data-val good">+34%</span></div>
+        </div>
+        <div class="data-card">
+          <div class="data-card-header">
+            <div class="data-card-title">AI Agent</div>
+            <div class="data-status"><div class="status-dot"></div>Active</div>
+          </div>
+          <div class="data-row"><span class="data-key">Queries Handled</span><span class="data-val">847</span></div>
+          <div class="data-row"><span class="data-key">Resolved Auto</span><span class="data-val good">91%</span></div>
+          <div class="data-row"><span class="data-key">Avg Response</span><span class="data-val">1.2s</span></div>
+          <div class="data-row"><span class="data-key">Escalations</span><span class="data-val">9%</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPONENTS -->
+<section id="components">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">05 / Component Library</div>
+      <h2 class="section-title">UI Primitives</h2>
+      <p class="section-sub">The building blocks of every digital touchpoint. Consistent, documented, opinionated.</p>
+    </div>
+
+    <div class="reveal">
+      <div class="component-grid">
+        <!-- Buttons -->
+        <div class="component-block">
+          <div class="component-label">Buttons</div>
+          <div class="btn-set">
+            <button class="btn-primary btn-sm">Primary Action →</button>
+            <button class="btn-ghost btn-sm">Ghost / Secondary</button>
+            <button class="btn-destructive btn-sm">Destructive</button>
+            <button class="btn-steel btn-sm">Steel / Info</button>
+            <button class="btn-muted btn-sm">Muted / Disabled</button>
+          </div>
+          <div style="margin-top:20px;font-family:var(--mono);font-size:0.6rem;color:var(--muted);line-height:1.8">
+            Primary: filled red, mono label, square corners<br>
+            Ghost: transparent, off-white border<br>
+            All: 0.75rem mono, +0.12em tracking, uppercase
+          </div>
+        </div>
+
+        <!-- Tags -->
+        <div class="component-block">
+          <div class="component-label">Tags &amp; Chips</div>
+          <div class="tag-set">
+            <div class="tag red">Brand Identity</div>
+            <div class="tag steel">AI Systems</div>
+            <div class="tag active">Active</div>
+            <div class="tag">Shopify Build</div>
+            <div class="tag">Automation</div>
+            <div class="tag">MCP Agent</div>
+            <div class="tag red">0 → 1</div>
+            <div class="tag steel">1 → 10</div>
+          </div>
+          <div style="margin-top:20px;font-family:var(--mono);font-size:0.6rem;color:var(--muted);line-height:1.8">
+            Mono 0.6rem, +0.1em tracking, uppercase<br>
+            Three states: neutral / active (red) / info (steel)
+          </div>
+        </div>
+
+        <!-- Dividers -->
+        <div class="component-block">
+          <div class="component-label">Dividers &amp; Rules</div>
+          <div class="divider-set">
+            <div class="div-full"></div>
+            <div class="div-red"></div>
+            <div class="div-accent"></div>
+            <div class="div-dot"><span></span></div>
+            <div style="height:1px;background:linear-gradient(90deg,transparent,var(--muted),transparent)"></div>
+          </div>
+          <div style="margin-top:20px;font-family:var(--mono);font-size:0.6rem;color:var(--muted);line-height:1.8">
+            Full rule: rgba(255,255,255,0.07)<br>
+            Accent fade: red → transparent (left-anchored)<br>
+            Block accent: 40px × 2px solid red
+          </div>
+        </div>
+
+        <!-- Section label anatomy -->
+        <div class="component-block">
+          <div class="component-label">Section Labels</div>
+          <div style="display:flex;flex-direction:column;gap:20px;margin-bottom:20px">
+            <div class="section-label" style="margin-bottom:0">01 / Primary Label</div>
+            <div style="font-family:var(--mono);font-size:0.65rem;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;display:flex;align-items:center;gap:12px">
+              <span style="display:block;width:32px;height:1px;background:var(--muted)"></span>
+              Secondary Label
+            </div>
+            <div style="font-family:var(--mono);font-size:0.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.15em">// Code-style Label</div>
+          </div>
+          <div style="font-family:var(--mono);font-size:0.6rem;color:var(--muted);line-height:1.8">
+            Always mono, always uppercase<br>
+            Red + line: primary section openers<br>
+            // prefix: technical/data contexts
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- USAGE RULES -->
+<section id="usage" style="background:var(--ink-soft)">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">06 / Usage Rules</div>
+      <h2 class="section-title">Do &amp; Don't</h2>
+      <p class="section-sub">Brand consistency is enforced by clear rules, not good intentions. These apply to every touchpoint.</p>
+    </div>
+
+    <div class="reveal">
+      <div class="rules-grid">
+        <div class="rule-card do">
+          <div class="rule-card-label">✓ DO</div>
+          <div class="rule-item">Use Signal Red for one dominant element per visual field — a CTA, an accent line, or a key data value.</div>
+          <div class="rule-item">Set headings in Sora with negative tracking (-0.02em or tighter).</div>
+          <div class="rule-item">Keep the logo on dark, light, or red backgrounds only — never on photography directly.</div>
+          <div class="rule-item">Use IBM Plex Mono exclusively for technical labels, data values, and system indicators.</div>
+          <div class="rule-item">Maintain the grain texture on all full-bleed dark sections.</div>
+          <div class="rule-item">Use the section label pattern (line + mono text + number) to open every new content section.</div>
+        </div>
+        <div class="rule-card dont">
+          <div class="rule-card-label">✗ DON'T</div>
+          <div class="rule-item">Never use red as a background fill for content areas — only for the logo field and CTA buttons.</div>
+          <div class="rule-item">Never use gradients as primary design elements. One subtle radial gradient max per section.</div>
+          <div class="rule-item">Never italicize the logo wordmark or distort the mark's proportions.</div>
+          <div class="rule-item">Never use Sora for body copy or IBM Plex Mono for headings — roles are fixed.</div>
+          <div class="rule-item">Never place the full logo below 120px wide on digital, or 20mm on print.</div>
+          <div class="rule-item">Never add drop shadows to the logo mark. The mark is flat and structural — always.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Minimum sizes and clear zone visual -->
+    <div class="reveal" style="margin-top:80px">
+      <div class="section-label">Clear Zone Reference</div>
+      <div style="border:1px solid var(--rule);padding:48px;margin-top:24px;display:flex;justify-content:center;">
+        <div style="position:relative;display:inline-block">
+          <!-- Clear zone indicator -->
+          <div style="position:absolute;inset:-20px;border:1px dashed rgba(232,52,26,0.3);pointer-events:none">
+            <span style="position:absolute;top:2px;left:4px;font-family:var(--mono);font-size:0.5rem;color:rgba(232,52,26,0.5);letter-spacing:0.1em">CLEAR ZONE</span>
+          </div>
+          <div class="sk-logo">
+            <div class="sk-mark">
+              <svg viewBox="0 0 80 80" fill="none"><line x1="16" y1="64" x2="16" y2="16" stroke="#F0EEE8" stroke-width="2" stroke-linecap="square"/><line x1="16" y1="16" x2="64" y2="16" stroke="#F0EEE8" stroke-width="2" stroke-linecap="square"/><line x1="16" y1="40" x2="48" y2="40" stroke="#E8341A" stroke-width="2" stroke-linecap="square"/><line x1="48" y1="40" x2="48" y2="64" stroke="#E8341A" stroke-width="2" stroke-linecap="square"/><rect x="9" y="9" width="14" height="14" fill="#F0EEE8"/><rect x="57" y="9" width="14" height="14" fill="#F0EEE8"/><rect x="9" y="57" width="14" height="14" fill="#F0EEE8"/><rect x="41" y="33" width="14" height="14" fill="#E8341A"/><rect x="41" y="57" width="14" height="14" fill="#E8341A"/></svg>
+            </div>
+            <div class="sk-wordmark">
+              <div class="sk-name">Store Kholo</div>
+              <div class="sk-tagline">Commerce Systems · Built to Scale</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;gap:32px;margin-top:20px;flex-wrap:wrap">
+        <div style="font-family:var(--mono);font-size:0.65rem;color:var(--muted)">Min digital width: <span style="color:var(--off-white)">120px (full lockup)</span></div>
+        <div style="font-family:var(--mono);font-size:0.65rem;color:var(--muted)">Min icon width: <span style="color:var(--off-white)">32px</span></div>
+        <div style="font-family:var(--mono);font-size:0.65rem;color:var(--muted)">Clear zone: <span style="color:var(--off-white)">= height of red corner square</span></div>
+        <div style="font-family:var(--mono);font-size:0.65rem;color:var(--muted)">Print min: <span style="color:var(--off-white)">20mm</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-logo">Store<span>·</span>Kholo</div>
+    <div class="footer-sub">Brand Identity System · v1.0 · Confidential</div>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if(e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+
+  // TOC dots
+  const sections = ['hero','logo','color','type','visual','components','usage'];
+  const dots = document.querySelectorAll('.toc-dot');
+  const secObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting) {
+        const id = e.target.id;
+        const idx = sections.indexOf(id);
+        dots.forEach((d,i) => d.classList.toggle('active', i === idx));
+      }
+    });
+  }, { threshold: 0.4 });
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if(el) secObserver.observe(el);
+  });
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      document.getElementById(sections[i])?.scrollIntoView({behavior:'smooth'});
+    });
+  });
+
+  // Nav background
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.background = window.scrollY > 60 ? 'rgba(10,10,20,0.95)' : 'rgba(10,10,20,0.85)';
+  });
+</script>
+</body>
+</html>
