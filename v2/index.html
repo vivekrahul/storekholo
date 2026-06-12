@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Store Kholo — Commerce Operating System</title>
+  <meta name="description" content="Brand architecture, commerce infrastructure, and AI-native operations — assembled as a single system.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&family=IBM+Plex+Mono:wght@400;500;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- LOADING -->
+  <div id="loading">
+    <div class="ld-inner">
+      <div class="ld-logo">
+        <span class="ld-bracket">[</span>STORE KHOLO<span class="ld-bracket">]</span>
+      </div>
+      <div class="ld-bar"><div class="ld-fill"></div></div>
+      <div class="ld-label">BUILDING THE WORLD_</div>
+    </div>
+  </div>
+
+  <!-- 3D CANVAS -->
+  <canvas id="world"></canvas>
+
+  <!-- OVERLAYS -->
+  <div class="vignette"></div>
+  <div class="grid-overlay"></div>
+
+  <!-- CURSOR -->
+  <div id="cursor"><div class="cur-ring"></div></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <a href="/v2" class="nav-brand">
+      <div class="nb-icon">
+        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+          <line x1="16" y1="64" x2="16" y2="16" stroke="#00FF88" stroke-width="2" stroke-linecap="square"/>
+          <line x1="16" y1="16" x2="64" y2="16" stroke="#00FF88" stroke-width="2" stroke-linecap="square"/>
+          <line x1="16" y1="40" x2="48" y2="40" stroke="#00FF88" stroke-width="2" stroke-linecap="square"/>
+          <line x1="48" y1="40" x2="48" y2="64" stroke="#00FF88" stroke-width="2" stroke-linecap="square"/>
+          <rect x="9" y="9" width="14" height="14" fill="#00FF88"/>
+          <rect x="57" y="9" width="14" height="14" fill="#00FF88"/>
+          <rect x="9" y="57" width="14" height="14" fill="#00FF88"/>
+          <rect x="41" y="33" width="14" height="14" fill="#10B981"/>
+          <rect x="41" y="57" width="14" height="14" fill="#10B981"/>
+        </svg>
+      </div>
+      <span>STORE KHOLO</span>
+    </a>
+    <div class="nav-links">
+      <a href="#systems">Systems</a>
+      <a href="#process">Process</a>
+      <a href="#serve">Who We Serve</a>
+      <a href="#contact" class="nav-cta">Start a Project</a>
+    </div>
+    <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+
+  <div class="mobile-menu">
+    <a href="#systems">Systems</a>
+    <a href="#process">Process</a>
+    <a href="#serve">Who We Serve</a>
+    <a href="#contact">Start a Project</a>
+  </div>
+
+  <main class="journey" id="journey">
+
+    <!-- ═══ ZONE 1: HERO ═══ -->
+    <section class="zone zone-hero" id="hero">
+      <div class="hero-wrap">
+        <p class="eyebrow"><span class="ey-bar"></span> COMMERCE OPERATING SYSTEM</p>
+        <h1 class="hero-mega">
+          <span class="hm" style="--i:0">We Build</span>
+          <span class="hm" style="--i:1">Systems For</span>
+          <span class="hm hm-g" style="--i:2">Brands That</span>
+          <span class="hm hm-accent" style="--i:3">
+            <span class="cycler"><span>Sell.</span></span>
+          </span>
+        </h1>
+        <p class="hero-sub">Brand architecture, commerce infrastructure,<br>and AI-native operations — as a single system.</p>
+        <div class="hero-acts">
+          <a href="#contact" class="btn-g">Start a Project <span>→</span></a>
+          <a href="#systems" class="btn-outline-g">Explore Systems ↓</a>
+        </div>
+        <div class="hero-chips">
+          <span>SHOPIFY</span><span>AI AGENTS</span><span>BRAND SYSTEMS</span><span>MCP</span>
+        </div>
+      </div>
+
+      <!-- Live metrics panel -->
+      <div class="metrics-panel">
+        <div class="mp-head">
+          <span class="mp-title">LIVE SYSTEMS</span>
+          <span class="mp-status"><i class="pulse"></i> OPERATIONAL</span>
+        </div>
+        <div class="mp-row">
+          <div class="mp-item">
+            <span class="mp-val">4.2%</span>
+            <span class="mp-lbl">Conv Rate</span>
+          </div>
+          <div class="mp-item">
+            <span class="mp-val">+34%</span>
+            <span class="mp-lbl">MoM Growth</span>
+          </div>
+          <div class="mp-item">
+            <span class="mp-val">91%</span>
+            <span class="mp-lbl">AI Autonomy</span>
+          </div>
+          <div class="mp-item">
+            <span class="mp-val">1.2s</span>
+            <span class="mp-lbl">Avg Response</span>
+          </div>
+        </div>
+        <div class="mp-tags">
+          <span>BRAND SYSTEM <b>ACTIVE</b></span>
+          <span>SHOPIFY <b>OPTIMIZED</b></span>
+          <span>AI AGENT <b>RUNNING</b></span>
+          <span>AUTOMATIONS <b>12 LIVE</b></span>
+        </div>
+      </div>
+
+      <div class="scroll-hint">
+        <div class="sh-dots">
+          <div class="sh-d"></div><div class="sh-d"></div><div class="sh-d"></div>
+        </div>
+        <span>SCROLL</span>
+      </div>
+
+      <div class="ticker-wrap">
+        <div class="ticker-track">
+          <span>BRAND SYSTEMS · SHOPIFY ARCHITECTURE · AI COMMERCE · WORKFLOW AUTOMATION · MCP AGENTS · RETENTION INFRASTRUCTURE · DATA LAYERS · 0 TO 1 BUILDS ·&nbsp;</span>
+          <span>BRAND SYSTEMS · SHOPIFY ARCHITECTURE · AI COMMERCE · WORKFLOW AUTOMATION · MCP AGENTS · RETENTION INFRASTRUCTURE · DATA LAYERS · 0 TO 1 BUILDS ·&nbsp;</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ ZONE 2: PROBLEM ═══ -->
+    <section class="zone zone-problem" id="problem">
+      <div class="zone-panel">
+        <p class="eyebrow reveal"><span class="ey-bar"></span> THE PROBLEM</p>
+        <blockquote class="prob-quote reveal">
+          "The market has tools. Templates. Vendors.<br>
+          What it doesn't have —<br>
+          <em>is the system that connects them.</em>"
+        </blockquote>
+        <div class="stat-row reveal">
+          <div class="stat-block">
+            <div class="stat-n" data-count="73" data-suffix="%">0%</div>
+            <p>of early stores fail to reach ₹10L in 12 months</p>
+          </div>
+          <div class="stat-sep"></div>
+          <div class="stat-block">
+            <div class="stat-n" data-count="5" data-suffix="+">0+</div>
+            <p>average vendors a founder juggles before working infrastructure</p>
+          </div>
+          <div class="stat-sep"></div>
+          <div class="stat-block">
+            <div class="stat-n" data-count="0">0</div>
+            <p>of them talk to each other by default</p>
+          </div>
+        </div>
+        <p class="prob-close reveal">We've seen every version of this failure. We built the solution.</p>
+      </div>
+    </section>
+
+    <!-- ═══ ZONE 3: SYSTEMS (CARDS) ═══ -->
+    <section class="zone zone-systems" id="systems">
+      <div class="zone-panel">
+        <p class="eyebrow reveal"><span class="ey-bar"></span> PRACTICE AREAS</p>
+        <h2 class="zone-h reveal">Five Systems.<br>One World.</h2>
+
+        <div class="sys-grid">
+          <div class="sys-card reveal" style="--ci:0">
+            <div class="sc-top">
+              <span class="sc-num">01</span>
+              <div class="sc-icon">◈</div>
+            </div>
+            <h3>Brand &amp; Identity Foundation</h3>
+            <p>We define the strategic foundation — voice, visual identity, positioning, and the brand architecture that everything else builds on.</p>
+            <div class="pill-row">
+              <span class="pill">Brand Strategy</span><span class="pill">Visual Identity</span><span class="pill">Voice &amp; Tone</span><span class="pill">Asset Library</span>
+            </div>
+          </div>
+
+          <div class="sys-card reveal" style="--ci:1">
+            <div class="sc-top">
+              <span class="sc-num">02</span>
+              <div class="sc-icon">◉</div>
+            </div>
+            <h3>Commerce Architecture &amp; Store Build</h3>
+            <p>Your Shopify store isn't a website — it's a conversion engine. We architect every page, flow, and touchpoint for measurable outcomes.</p>
+            <div class="pill-row">
+              <span class="pill">Shopify Build</span><span class="pill">UX Architecture</span><span class="pill">Conversion Flows</span><span class="pill">Theme Dev</span>
+            </div>
+          </div>
+
+          <div class="sys-card reveal" style="--ci:2">
+            <div class="sc-top">
+              <span class="sc-num">03</span>
+              <div class="sc-icon">⬡</div>
+            </div>
+            <h3>Systems Integration &amp; Data Layer</h3>
+            <p>We connect your commerce, marketing, logistics, and intelligence layers into one unified data infrastructure.</p>
+            <div class="pill-row">
+              <span class="pill">API Integrations</span><span class="pill">Data Pipelines</span><span class="pill">MCP Infrastructure</span><span class="pill">Analytics</span>
+            </div>
+          </div>
+
+          <div class="sys-card reveal" style="--ci:3">
+            <div class="sc-top">
+              <span class="sc-num">04</span>
+              <div class="sc-icon">⬢</div>
+            </div>
+            <h3>AI-Native Operations &amp; Automation</h3>
+            <p>AI isn't a feature — it's an operational principle. We redesign your workflows and decision-making around intelligent automation.</p>
+            <div class="pill-row">
+              <span class="pill">AI Agents</span><span class="pill">Workflow Automation</span><span class="pill">Process Redesign</span><span class="pill">Trigger Logic</span>
+            </div>
+          </div>
+
+          <div class="sys-card reveal sc-wide" style="--ci:4">
+            <div class="sc-top">
+              <span class="sc-num">05</span>
+              <div class="sc-icon">◎</div>
+            </div>
+            <h3>Growth Systems &amp; Retention</h3>
+            <p>We build the loops — email, loyalty, reactivation, referral — that turn first-time buyers into lifelong customers. Growth isn't a campaign. It's infrastructure.</p>
+            <div class="pill-row">
+              <span class="pill">Retention Flows</span><span class="pill">Email Systems</span><span class="pill">Loyalty Programs</span><span class="pill">Referral Engine</span><span class="pill">LTV Optimization</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ ZONE 4: PROCESS (TIMELINE) ═══ -->
+    <section class="zone zone-process" id="process">
+      <div class="zone-panel">
+        <p class="eyebrow reveal"><span class="ey-bar"></span> HOW IT WORKS</p>
+        <h2 class="zone-h reveal">Three Phases.<br>Total Clarity.</h2>
+
+        <div class="timeline">
+          <div class="tl-item reveal">
+            <div class="tl-left">
+              <div class="tl-num">01</div>
+              <div class="tl-line"></div>
+            </div>
+            <div class="tl-body">
+              <h3>Discovery &amp; Audit</h3>
+              <p>We begin every engagement with a paid diagnostic — not a sales call. We map your current state, score your systems, and produce a roadmap you own.</p>
+              <div class="pill-row">
+                <span class="pill">Business diagnosis</span><span class="pill">Stack audit</span><span class="pill">Systems roadmap</span><span class="pill">Opportunity scoring</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item reveal">
+            <div class="tl-left">
+              <div class="tl-num">02</div>
+              <div class="tl-line"></div>
+            </div>
+            <div class="tl-body">
+              <h3>The Build</h3>
+              <p>We execute across brand, commerce, integrations, and AI in a single coordinated engagement. Every decision documented. Every milestone defined.</p>
+              <div class="pill-row">
+                <span class="pill">Brand foundation</span><span class="pill">Store architecture</span><span class="pill">Automation builds</span><span class="pill">AI system setup</span><span class="pill">Data layer</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item reveal">
+            <div class="tl-left">
+              <div class="tl-num">03</div>
+            </div>
+            <div class="tl-body">
+              <h3>Systems Retainer</h3>
+              <p>After launch, we don't disappear. We stay on as your systems partner — iterating, optimizing, and building as you scale.</p>
+              <div class="pill-row">
+                <span class="pill">Monthly optimization</span><span class="pill">New automations</span><span class="pill">Performance review</span><span class="pill">Ongoing AI builds</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Proof numbers -->
+        <div class="proof-grid reveal">
+          <div class="pg-item">
+            <span class="pg-n" data-count="50" data-suffix="+">0+</span>
+            <span class="pg-l">Systems Built</span>
+          </div>
+          <div class="pg-item">
+            <span class="pg-n" data-count="4" data-suffix=".2%">0</span>
+            <span class="pg-l">Avg Conversion</span>
+          </div>
+          <div class="pg-item">
+            <span class="pg-n" data-count="200" data-suffix="hrs">0</span>
+            <span class="pg-l">Saved Monthly</span>
+          </div>
+          <div class="pg-item">
+            <span class="pg-n" data-count="12" data-suffix=" Wks">0</span>
+            <span class="pg-l">0→1 Delivery</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ ZONE 5: WHO WE SERVE ═══ -->
+    <section class="zone zone-serve" id="serve">
+      <div class="serve-split">
+        <div class="sp-panel sp-left reveal">
+          <div class="sp-tag">PATH A</div>
+          <div class="sp-big">0 → 1</div>
+          <h3>You have a product.<br>You need a system.</h3>
+          <p>You've validated demand but your infrastructure is duct-taped together. You need brand, store, automation, and intelligence — built right the first time.</p>
+          <ul class="sp-list">
+            <li>Complete brand identity</li>
+            <li>Conversion-built store</li>
+            <li>Automation from day one</li>
+            <li>AI-native from the start</li>
+          </ul>
+          <a href="#contact" class="sp-cta">This is us →</a>
+        </div>
+        <div class="sp-panel sp-right reveal">
+          <div class="sp-tag sp-tag-b">PATH B</div>
+          <div class="sp-big sp-big-b">1 → 10</div>
+          <h3>You're generating revenue.<br>Your ops are costing you.</h3>
+          <p>Revenue is growing but your margins aren't. Five vendors, no integration, your team is fighting fires. Time to rebuild the engine properly.</p>
+          <ul class="sp-list">
+            <li>Systems audit</li>
+            <li>Integrations rebuild</li>
+            <li>AI agent deployment</li>
+            <li>Retention infrastructure</li>
+          </ul>
+          <a href="#contact" class="sp-cta sp-cta-b">This is us →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ ZONE 6: MANIFESTO ═══ -->
+    <section class="zone zone-manifesto" id="manifesto">
+      <div class="zone-panel mf-panel">
+        <p class="eyebrow"><span class="ey-bar"></span> WHY WE EXIST</p>
+        <div class="mf-lines">
+          <div class="mf-line">"Most founders don't have an execution problem."</div>
+          <div class="mf-line mf-dim">They have a systems problem.</div>
+          <div class="mf-line">"Five vendors, no integration. A store with no conversion architecture. AI tools with no process redesign."</div>
+          <div class="mf-line mf-g">We've seen every version of this failure.</div>
+          <div class="mf-line">"Store Kholo exists to replace the fragmented approach — with one system, built right, from the start."</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ ZONE 7: CONTACT ═══ -->
+    <section class="zone zone-contact" id="contact">
+      <div class="zone-panel">
+        <div class="ct-grid">
+          <div class="ct-left">
+            <p class="eyebrow"><span class="ey-bar"></span> START A PROJECT</p>
+            <h2 class="zone-h">Ready to open<br>the store?</h2>
+            <p class="ct-body">Every engagement starts with a paid Discovery — a structured diagnostic of your brand, systems, and opportunity. No fluff call. No generic audit. A real roadmap you own.</p>
+            <form id="contact-form">
+              <div class="fg">
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="Your name" required>
+              </div>
+              <div class="fg">
+                <label for="company">Company</label>
+                <input type="text" id="company" placeholder="Company name">
+              </div>
+              <div class="fg">
+                <label>Stage</label>
+                <div class="stage-toggle">
+                  <button type="button" class="active">0 → 1</button>
+                  <button type="button">1 → 10</button>
+                </div>
+              </div>
+              <div class="fg">
+                <label for="needs">What you need</label>
+                <textarea id="needs" placeholder="Tell us about your project..."></textarea>
+              </div>
+              <button type="submit" class="form-submit">REQUEST DISCOVERY CALL →</button>
+            </form>
+          </div>
+          <div class="ct-right">
+            <div class="next-card">
+              <h4>What happens next</h4>
+              <ul class="next-list">
+                <li><span class="nl-num">01</span> We review your submission</li>
+                <li><span class="nl-num">02</span> 48hr response with a brief diagnostic question</li>
+                <li><span class="nl-num">03</span> Discovery call scheduled — paid, structured, valuable</li>
+              </ul>
+              <p class="next-email">hello@storekholo.com</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="ft-l">
+      <div class="ft-mark">STORE KHOLO</div>
+      <div class="ft-tag">Commerce Systems. Built to Scale.</div>
+    </div>
+    <div class="ft-r">
+      <a href="/">← View v1</a>
+      <span>hello@storekholo.com</span>
+    </div>
+    <div class="ft-copy">© 2026 Store Kholo. All rights reserved.</div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="script.js" defer></script>
+</body>
+</html>
